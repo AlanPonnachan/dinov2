@@ -7,8 +7,11 @@ from dinov2.layers import Mlp, PatchEmbed, SwiGLUFFNFused, MemEffAttention, Nest
 
 #load model
 model = vit_base(
-    patch_size=16,
-        num_register_tokens=0,
+    img_size = 518,
+    patch_size = 14,
+    init_values = 1.0,
+    ffn_layer = "mlp",
+    block_chunks = 0,
 )
 
 #equip the model with weights
