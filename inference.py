@@ -8,10 +8,6 @@ from dinov2.layers import Mlp, PatchEmbed, SwiGLUFFNFused, MemEffAttention, Nest
 #load model
 model = vit_base(
     patch_size=16,
-        depth=12,
-        num_heads=12,
-        mlp_ratio=4,
-        block_fn=partial(Block, attn_class=MemEffAttention),
         num_register_tokens=0,
 )
 
