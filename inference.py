@@ -2,9 +2,19 @@ from dinov2.models.vision_transformer import vit_base
 import torch
 from PIL import Image
 import requests
+from functools import partial
+from dinov2.layers import Mlp, PatchEmbed, SwiGLUFFNFused, MemEffAttention, NestedTensorBlock as Block
 
 #load model
-model = vit_base()
+model = vit_base(
+    patch_size=16,
+        embed_dim=768,
+        depth=12,
+        num_heads=12,
+        mlp_ratio=4,
+        block_fn=partial(Block, attn_class=MemEffAttention),
+        num_register_tokens=0,
+)
 
 #equip the model with weights
 state_dict = torch.hub.load_state_dict_from_url(
