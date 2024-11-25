@@ -3,7 +3,7 @@ import torch
 from PIL import Image
 import requests
 from functools import partial
-from dinov2.layers import Mlp, PatchEmbed, SwiGLUFFNFused, MemEffAttention, NestedTensorBlock as Block
+from torchvision import transforms
 
 #load model
 model = vit_base(
